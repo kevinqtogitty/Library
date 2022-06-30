@@ -1,0 +1,63 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    font-family: 'Quicksand', sans-serif;
+    font
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+main {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+nav {
+    background-color: #084c61;
+    height: 5rem;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 5rem;
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: .5rem;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+
+}
+
+.bookGrid {
+    background-color: #56a3a6;
+    height: 100%;
+    width: 70%;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 10rem;
+    grid-column-gap: 10px;
+    grid-row-gap: 15px;
+}
+    
+.card {
+    border: solid red;
+    height: 10rem;
+}
+
+form {
+    background-color: #db504a;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    color: #fff;
+}
+
+fieldset {
+    border: none;
+}
+
