@@ -7,9 +7,91 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="style.css">
-    <script src="main.js"></script>
+    <script src="main.js" defer></script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Quicksand:wght@300&display=swap');
+    </style>
 </head>
 <body>
+    <main>
+        <nav>Virtual Library</nav>
+
+            <div class="bookGrid">
+                <div class="card">
+                    <div class="title">
+                        The Hobbit
+                    </div>
+                    <div class="author">
+                        JRR Tolkien
+                    </div>
+                    <div class="pages">
+                        310 pages
+                    </div>
+                    <p>Has read?</p>
+                </div>
+
+                <div class="card">
+                    <div class="title">
+                        The Hobbit
+                    </div>
+                    <div class="author">
+                        JRR Tolkien
+                    </div>
+                    <div class="pages">
+                        310 pages
+                    </div>
+                    <p>Has read?</p>
+                </div>
+
+                <div class="card">
+                    <div class="title">
+                        The Hobbit
+                    </div>
+                    <div class="author">
+                        JRR Tolkien
+                    </div>
+                    <div class="pages">
+                        310 pages
+                    </div>
+                    <p>Has read?</p>
+                </div>
+
+                <div class="card">
+                    <div class="title">
+                        The Hobbit
+                    </div>
+                    <div class="author">
+                        JRR Tolkien
+                    </div>
+                    <div class="pages">
+                        310 pages
+                    </div>
+                    <p>Has read?</p>
+                </div>
+            </div>
+
+        <form action="POST">
+            <Legend>Add a New Book!</Legend>
+
+            <fieldset>
+                <label for="Title">Book Title</label><br>
+                <input type="text" name="title" id="title"><br>
+
+                <label for="Author">Author</label><br>
+                <input type="text" name="author" id="author"><br>
+
+                <label for="Pages">Pages</label><br>
+                <input type="number" name="pages" id="pages"><br><br>
+
+                <label for="hasRead">Have you read it?</label><br>
+                <input type="checkbox" name="hasRead" id="hasRead">
+
+                <br>
+                <button type="submit">Add Book!</button>
+            </fieldset>
+        </form>
+    </main>
     
 </body>
 </html>
