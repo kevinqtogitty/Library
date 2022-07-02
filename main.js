@@ -41,6 +41,10 @@ function createCard(object, x) {
     const hasRead = document.createElement('p');
     const remove = document.createElement('button')
 
+    newCard.setAttribute('id', object.title)
+    remove.setAttribute('value', bookCounter)
+    remove.setAttribute('onclick', 'removeFromLib(this.value), removeFromDom(this.parentNode.id) ')
+
     newCard.className = 'card';
     title.className = 'title';
     author.className = 'author';
@@ -66,6 +70,16 @@ function createCard(object, x) {
 
 function reset() {
     document.querySelector('.form').reset();
+}
+
+function removeFromLib(index) {
+    myLibrary.splice(index, 1)
+    console.log(myLibrary)
+}
+
+function removeFromDom(id) {
+    const domElement = document.querySelector('#' + id);
+    domElement.remove();
 }
 
 // const theHobbit = myLibrary.push(new Book('The Hobbit', 'J.R.R Tolkien', 310, 'has not been read'));
