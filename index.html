@@ -17,58 +17,8 @@
     <main>
         <nav>Virtual Library</nav>
 
-            <div class="bookGrid">
-                <div class="card">
-                    <div class="title">
-                        The Hobbit
-                    </div>
-                    <div class="author">
-                        JRR Tolkien
-                    </div>
-                    <div class="pages">
-                        310 pages
-                    </div>
-                    <p>Has read?</p>
-                </div>
-
-                <div class="card">
-                    <div class="title">
-                        The Hobbit
-                    </div>
-                    <div class="author">
-                        JRR Tolkien
-                    </div>
-                    <div class="pages">
-                        310 pages
-                    </div>
-                    <p>Has read?</p>
-                </div>
-
-                <div class="card">
-                    <div class="title">
-                        The Hobbit
-                    </div>
-                    <div class="author">
-                        JRR Tolkien
-                    </div>
-                    <div class="pages">
-                        310 pages
-                    </div>
-                    <p>Has read?</p>
-                </div>
-
-                <div class="card">
-                    <div class="title">
-                        The Hobbit
-                    </div>
-                    <div class="author">
-                        JRR Tolkien
-                    </div>
-                    <div class="pages">
-                        310 pages
-                    </div>
-                    <p>Has read?</p>
-                </div>
+            <div id="bookGrid">
+                <!-- books will appear here -->
             </div>
 
         <form action="POST">
@@ -82,13 +32,14 @@
                 <input type="text" name="author" id="author"><br>
 
                 <label for="Pages">Pages</label><br>
-                <input type="number" name="pages" id="pages"><br><br>
+                <input type="number" name="pages" id="pages" min="1" max="10000"><br><br>
 
-                <label for="hasRead">Have you read it?</label><br>
+                <label for="hasRead">Check the box if you've read it!</label>
                 <input type="checkbox" name="hasRead" id="hasRead">
-
                 <br>
-                <button type="submit">Add Book!</button>
+                <br>
+                <button type="button" onclick="newBook()">Add Book!</button>
+                <button type="button" onclick="reset()">Reset fields</button>
             </fieldset>
         </form>
     </main>
