@@ -64,6 +64,9 @@ function createCard(object, x) {
     
 }
 
+function reset() {
+    document.querySelector('.form').reset();
+}
 
 // const theHobbit = myLibrary.push(new Book('The Hobbit', 'J.R.R Tolkien', 310, 'has not been read'));
 // const dune = myLibrary.push(new Book('Dune', 'Frank Herbert', 412, 'has been read'));
