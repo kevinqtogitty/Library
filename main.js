@@ -56,7 +56,7 @@ function createCard(object, x) {
     newCard.setAttribute('id', object.id)
     remove.setAttribute('value', bookCounter)
     remove.setAttribute('onclick', 'removeFromLib(this.value), removeFromDom(this.parentNode.parentNode.id)')
-    hasRead.setAttribute('onclick', 'changeReadStatus()')
+    hasRead.setAttribute('onclick', 'changeReadStatus(this.parentNode.parentNode.id)')
 
     newCard.className = 'card';
     title.className = 'title';
@@ -67,9 +67,9 @@ function createCard(object, x) {
     hasRead.className = 'hasRead';
     remove.className = 'removeButton';
 
-    title.innerText = object.title;
-    author.innerText = object.author;
-    pages.innerText = object.pages;
+    title.innerText = 'Title: ' + object.title;
+    author.innerText = 'Author: ' + object.author;
+    pages.innerText = 'Pages: ' + object.pages;
     hasRead.innerText = x;
     remove.innerText = 'Remove'
 
@@ -85,8 +85,14 @@ function createCard(object, x) {
     document.querySelector('.form').reset();    
 }
 
-function changeReadStatus() {
-    console.log('this is working')
+function changeReadStatus(parentID) {
+    const fullSelector = document.querySelector('#' + parentID + ' .hasRead');
+    if (fullSelector.innerText === 'Not Read') {
+        fullSelector.innerText = 'Read';
+    }
+    else {
+        fullSelector.innerText = 'Not Read';
+    }
 }
 
 function reset() {
