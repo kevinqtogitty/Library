@@ -18,62 +18,7 @@
         <nav>Virtual Library</nav>
 
             <div id="bookGrid">
-                <!-- books will appear here -->
-                <div class="card">
-                    <div class="title">
-                        Dune
-                    </div>
-
-                    <div class="author">
-                        Frank Herbert
-                    </div>
-                    <div class="pages">
-                        900
-                    </div>
-
-                    <div class="buttonCont">
-                        <button class="hasRead"> Not read</button>
-                        <button>remove</button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div class="title">
-                        Dune
-                    </div>
-
-                    <div class="author">
-                        Frank Herbert
-                    </div>
-                    <div class="pages">
-                        900
-                    </div>
-
-                    <div class="buttonCont">
-                        <button class="hasRead"> Not read</button>
-                        <button>remove</button>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <div class="title">
-                        Dune
-                    </div>
-
-                    <div class="author">
-                        Frank Herbert
-                    </div>
-                    <div class="pages">
-                        900
-                    </div>
-
-                    <div class="buttonCont"> 
-                        <button class="hasRead"> Not read</button>
-                        <button>remove</button>
-                    </div>
-                </div>
-                
+                <!-- books will appear here -->  
             </div>
 
         <form action="POST" class="form" required>
@@ -81,7 +26,7 @@
 
             <fieldset>
                 <label for="Title">Book Title</label><br>
-                <input type="text" name="title" id="title"><br>
+                <input type="text" name="title" id="title" maxlength="40"><br>
 
                 <label for="Author">Author</label><br>
                 <input type="text" name="author" id="author"><br>
@@ -90,7 +35,7 @@
                 <input type="number" name="pages" id="pages" min="1" max="10000"><br><br>
 
                 <label for="hasRead">Check the box if you've read it!</label>
-                <input type="checkbox" name="hasRead" id="hasRead">
+                <input type="checkbox" name="hasRead" class="hasReadCheck">
                 <br>
                 <br>
                 <button type="button" onclick="newBook()">Add Book!</button>
