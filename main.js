@@ -9,7 +9,8 @@ function newBook() {
     const title = document.getElementById('title').value
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
-    let hasRead = document.getElementsByClassName('hasReadCheck').checked;
+    let hasRead = document.querySelector('.hasReadCheck').checked;
+    console.log(hasRead)
 
     //check if form is empty
     if ((title || author || pages) === '') {
@@ -55,8 +56,7 @@ function createCard(object, x) {
     newCard.setAttribute('id', object.id)
     remove.setAttribute('value', bookCounter)
     remove.setAttribute('onclick', 'removeFromLib(this.value), removeFromDom(this.parentNode.parentNode.id)')
-    // hasRead.setAttribute('onclick', 'changeReadStatus()')
-    hasRead.addEventListener('click', changeReadStatus())
+    hasRead.setAttribute('onclick', 'changeReadStatus()')
 
     newCard.className = 'card';
     title.className = 'title';
