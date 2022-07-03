@@ -5,11 +5,19 @@ let bookCounter = 0;
 //This is called when the Add Book button is clicked
 //Submits form info
 function newBook() {
-    const title = document.getElementById('title').value;
+    let id = document.getElementById('title').value.replaceAll(' ', '');
+    const title = document.getElementById('title').value
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
-    let hasRead = document.getElementById('hasRead').checked;
+    let hasRead = document.getElementsByClassName('hasReadCheck').checked;
 
+    //check if form is empty
+    if ((title || author || pages) === '') {
+        alert('Fields cannot be empty!')
+        return;
+    }
+
+    //Did they mark it read?
     if (hasRead === true) {
         hasRead = 'Read'
     }
@@ -17,19 +25,21 @@ function newBook() {
         hasRead = 'Not Read'
     }
 
-    myLibrary.push(new Book(title, author, pages, hasRead, bookCounter))
+    //create a new book and push it into an array
+    myLibrary.push(new Book(title, author, pages, hasRead, bookCounter, id))
     createCard(myLibrary[bookCounter], hasRead);
 
-    bookCounter++;
+    console.log(myLibrary)
 }
 
-function Book(title, author, pages, hasRead, index) {
+function Book(title, author, pages, hasRead, index, id) {
+    this.id = id;
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.hasRead = hasRead;
     this.libIndex = index;
-
+    
 }
 
 function createCard(object, x) {
@@ -38,18 +48,24 @@ function createCard(object, x) {
     const title = document.createElement('div');
     const author = document.createElement('div');
     const pages = document.createElement('div');
-    const hasRead = document.createElement('p');
+    const buttonCont = document.createElement('div');
+    const hasRead = document.createElement('button');
     const remove = document.createElement('button')
 
-    newCard.setAttribute('id', object.title)
+    newCard.setAttribute('id', object.id)
     remove.setAttribute('value', bookCounter)
-    remove.setAttribute('onclick', 'removeFromLib(this.value), removeFromDom(this.parentNode.id) ')
+    remove.setAttribute('onclick', 'removeFromLib(this.value), removeFromDom(this.parentNode.parentNode.id)')
+    // hasRead.setAttribute('onclick', 'changeReadStatus()')
+    hasRead.addEventListener('click', changeReadStatus())
 
     newCard.className = 'card';
     title.className = 'title';
     author.className = 'author';
     pages.className = 'pages';
-    remove.className = 'remove'
+    remove.className = 'remove';
+    buttonCont.className = 'buttonCont';
+    hasRead.className = 'hasRead';
+    remove.className = 'removeButton';
 
     title.innerText = object.title;
     author.innerText = object.author;
@@ -60,12 +76,17 @@ function createCard(object, x) {
     newCard.appendChild(title);
     newCard.appendChild(author);
     newCard.appendChild(pages);
-    newCard.appendChild(hasRead);
-    newCard.appendChild(remove)
+    newCard.appendChild(buttonCont);
+    buttonCont.appendChild(hasRead);
+    buttonCont.appendChild(remove);
     grid.appendChild(newCard);
 
-    console.log(myLibrary[bookCounter])
-    
+    bookCounter++;
+    document.querySelector('.form').reset();    
+}
+
+function changeReadStatus() {
+    console.log('this is working')
 }
 
 function reset() {
@@ -73,15 +94,12 @@ function reset() {
 }
 
 function removeFromLib(index) {
-    myLibrary.splice(index, 1)
-    console.log(myLibrary)
+    myLibrary.splice(index, 1);
+    bookCounter--;
+    console.log(myLibrary);
 }
 
 function removeFromDom(id) {
     const domElement = document.querySelector('#' + id);
     domElement.remove();
 }
-
-// const theHobbit = myLibrary.push(new Book('The Hobbit', 'J.R.R Tolkien', 310, 'has not been read'));
-// const dune = myLibrary.push(new Book('Dune', 'Frank Herbert', 412, 'has been read'));
-// const theStranger = myLibrary.push(new Book('The Stranger', 'Albert Camus', 159, 'has not been read'));
