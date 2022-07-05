@@ -15,15 +15,21 @@
 </head>
 <body>
     <main>
-        <nav>Virtual Library</nav>
+        <div class="banner">
+            <h1>Virtual Library</h1>
+            <button type="button" class="formButton" onclick="modalToggle('open')">+</button>
+        </div>
 
-            <div id="bookGrid">
-                <!-- books will appear here -->  
-            </div>
+        <div id="bookGrid">
+            <!-- books will appear here -->  
+        </div>
 
         <form action="POST" class="form" required>
-            <Legend>Add a New Book!</Legend>
+            <div class="formHeader">
+                <Legend>Add a New Book!</Legend>
 
+                <button type="button" class="closeButton" onclick="modalToggle()">X</button>
+            </div>
             <fieldset>
                 <label for="Title">Book Title</label><br>
                 <input type="text" name="title" id="title" maxlength="40"><br>
@@ -41,8 +47,11 @@
                 <button type="button" onclick="newBook()">Add Book!</button>
                 <button type="button" onclick="reset()">Reset fields</button>
             </fieldset>
-        </form>
+        </form>    
+        
+
     </main>
+
     
 </body>
 </html>
