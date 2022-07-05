@@ -10,7 +10,6 @@ function newBook() {
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
     let hasRead = document.querySelector('.hasReadCheck').checked;
-    console.log(hasRead)
 
     //check if form is empty
     if ((title || author || pages) === '') {
@@ -29,8 +28,6 @@ function newBook() {
     //create a new book and push it into an array
     myLibrary.push(new Book(title, author, pages, hasRead, bookCounter, id))
     createCard(myLibrary[bookCounter], hasRead);
-
-    console.log(myLibrary)
 }
 
 function Book(title, author, pages, hasRead, index, id) {
@@ -40,7 +37,6 @@ function Book(title, author, pages, hasRead, index, id) {
     this.pages = pages;
     this.hasRead = hasRead;
     this.libIndex = index;
-    
 }
 
 function createCard(object, x) {
@@ -55,7 +51,7 @@ function createCard(object, x) {
 
     newCard.setAttribute('id', object.id)
     remove.setAttribute('value', bookCounter)
-    remove.setAttribute('onclick', 'removeFromLib(this.value), removeFromDom(this.parentNode.parentNode.id)')
+    remove.setAttribute('onclick', 'removeFromLib(this.value, this.parentNode.parentNode.id)')
     hasRead.setAttribute('onclick', 'changeReadStatus(this.parentNode.parentNode.id)')
 
     newCard.className = 'card';
@@ -99,13 +95,23 @@ function reset() {
     document.querySelector('.form').reset();
 }
 
-function removeFromLib(index) {
+function removeFromLib(index, id) {
     myLibrary.splice(index, 1);
     bookCounter--;
-    console.log(myLibrary);
+    removeFromDom(id)
 }
 
 function removeFromDom(id) {
     const domElement = document.querySelector('#' + id);
     domElement.remove();
+}
+
+function modalToggle(openClose) {
+    const form =  document.querySelector('.form');
+    if (openClose === 'open') {
+        form.style.display = 'flex'
+   }
+   else {
+        form.style.display = 'none'
+   }  
 }
